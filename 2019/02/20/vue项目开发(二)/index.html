@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vue,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="六 Vue指令(Directive)条件渲染指令 v-if v-else (必须紧跟v-if其后) v-show 123区别：1.v-show通过改变元素的css属性display，v-if通过适当的销毁和重建元素，是真正的条件渲染2.v-if适合条件不经常改变的场景，v-show适合频繁切换   列表渲染指令v-for 遍历数组 1234&amp;lt;div v-for=&amp;quot;(item,ind">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue项目开发(二)">
+<meta property="og:url" content="http://yoursite.com/2019/02/20/vue项目开发(二)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="六 Vue指令(Directive)条件渲染指令 v-if v-else (必须紧跟v-if其后) v-show 123区别：1.v-show通过改变元素的css属性display，v-if通过适当的销毁和重建元素，是真正的条件渲染2.v-if适合条件不经常改变的场景，v-show适合频繁切换   列表渲染指令v-for 遍历数组 1234&amp;lt;div v-for=&amp;quot;(item,ind">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-20T15:17:23.494Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue项目开发(二)">
+<meta name="twitter:description" content="六 Vue指令(Directive)条件渲染指令 v-if v-else (必须紧跟v-if其后) v-show 123区别：1.v-show通过改变元素的css属性display，v-if通过适当的销毁和重建元素，是真正的条件渲染2.v-if适合条件不经常改变的场景，v-show适合频繁切换   列表渲染指令v-for 遍历数组 1234&amp;lt;div v-for=&amp;quot;(item,ind">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/20/vue项目开发(二)/">
+
+
+
+
+
+  <title>vue项目开发(二) | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-something">
+          <a href="/something" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            我的有料
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/vue项目开发(二)/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈 航">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/2.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue项目开发(二)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-20T23:27:56+08:00">
+                2019-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="六-Vue指令-Directive"><a href="#六-Vue指令-Directive" class="headerlink" title="六 Vue指令(Directive)"></a>六 Vue指令(Directive)</h1><h4 id="条件渲染指令"><a href="#条件渲染指令" class="headerlink" title="条件渲染指令"></a>条件渲染指令</h4><ul>
+<li>v-if</li>
+<li>v-else (必须紧跟v-if其后)</li>
+<li>v-show <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">区别：</span><br><span class="line">1.v-show通过改变元素的css属性display，v-if通过适当的销毁和重建元素，是真正的条件渲染</span><br><span class="line">2.v-if适合条件不经常改变的场景，v-show适合频繁切换</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="列表渲染指令v-for"><a href="#列表渲染指令v-for" class="headerlink" title="列表渲染指令v-for"></a>列表渲染指令v-for</h4><ul>
+<li><p>遍历数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-for=&quot;(item,index) in items&quot;&gt;&lt;/div&gt;</span><br><span class="line">// item为每次遍历的元素</span><br><span class="line">// index为下标索引</span><br><span class="line">// item表示数组或对象</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>遍历对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-for=&quot;(value,key,index) in personObj&quot; :key=&quot;index&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">// index 索引</span><br><span class="line">// key</span><br><span class="line">// value</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>key属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">为了方便Vue实例跟踪每个节点的身份，从而重用或重新排列现有的元素</span><br><span class="line">key需要通过v-bind来绑定动态值，尽可能在使用v-for时提供key属性</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="方法和事件"><a href="#方法和事件" class="headerlink" title="方法和事件"></a>方法和事件</h4><blockquote>
+<p>v-on:事件名=”fn()” 函数定义在vue的选项methods中，没有参数时候后面的参数可以省略</p>
+<ul>
+<li>v-on可以简写成@符号</li>
+<li>事件修饰符</li>
+</ul>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">//event的事件可以使用vue事件的修饰符来实现.在@绑定的事件后面加上小圆点，在跟一个后缀来是使用修饰符</span><br><span class="line">1.stop</span><br><span class="line">2.prevent</span><br><span class="line">3.capture</span><br><span class="line">4.self</span><br><span class="line">5.once</span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 组织单击事件冒泡--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span> @<span class="attr">click.stop</span>=<span class="string">'handle'</span>&gt;</span>阻止单击事件冒泡<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 提交事件不再重载页面 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> @<span class="attr">submit.prevent</span>=<span class="string">''</span><span class="attr">handle</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 修饰符可以串联 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span> @<span class="attr">click.stop.prevent</span>=<span class="string">'handle'</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 只有修饰符 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> @<span class="attr">submit.prevent</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 添加事件侦听器时使用时间捕获模式 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> @<span class="attr">click.capture</span>=<span class="string">'handle'</span>&gt;</span>..<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 只当事件在该元素本身（而不是子元素）触发时触发回调 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> @<span class="attr">click.self</span>=<span class="string">'handle'</span>&gt;</span>..<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 只触发一次，组件同样适用 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> @<span class="attr">click.once</span>=<span class="string">'handle'</span>&gt;</span>..<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 在表单元素上监听键盘事件时。还可以使用按键修饰符，比如按下具体的某个键时才调用方法 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 只有在keyCode是13时调用vm.submit() --&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> @<span class="attr">keyup.13</span>=<span class="string">'submit'</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">    也可以自己配置具体的按键 </span></span><br><span class="line"><span class="comment">    Vue.config.keyCodes.f1=112;</span></span><br><span class="line"><span class="comment">    全局定义后，就可以使用@keyup.f1</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">    除了某个具体的keyCode外，vue还提供了一些快捷名称，以下是全部的别名</span></span><br><span class="line"><span class="comment">    	.enter</span></span><br><span class="line"><span class="comment">    	.tab</span></span><br><span class="line"><span class="comment">    	.delete</span></span><br><span class="line"><span class="comment">    	.esc</span></span><br><span class="line"><span class="comment">    	.space</span></span><br><span class="line"><span class="comment">    	.up</span></span><br><span class="line"><span class="comment">    	.down</span></span><br><span class="line"><span class="comment">    	.left</span></span><br><span class="line"><span class="comment">    	.right</span></span><br><span class="line"><span class="comment">    这些按键修饰符还可以组合使用，或和鼠标一起配合使用</span></span><br><span class="line"><span class="comment">    	.ctrl</span></span><br><span class="line"><span class="comment">    	.alt</span></span><br><span class="line"><span class="comment">    	.shift</span></span><br><span class="line"><span class="comment">    	.meta （mac下Command键 WIndows是窗口键）</span></span><br><span class="line"><span class="comment">  --&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="表单双向绑定v-model"><a href="#表单双向绑定v-model" class="headerlink" title="表单双向绑定v-model"></a>表单双向绑定v-model</h4><ul>
+<li>v-model只能用在input,select，textarea等表单元素上</li>
+<li>修饰符<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. lazy将改变默认的同步状态，在change事件中同步</span><br><span class="line">2. trim将自动过滤输入的首尾空格</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="七-组件详解"><a href="#七-组件详解" class="headerlink" title="七 组件详解"></a>七 组件详解</h1><h4 id="组件概念和复用"><a href="#组件概念和复用" class="headerlink" title="组件概念和复用"></a>组件概念和复用</h4><h4 id="使用props传递数据"><a href="#使用props传递数据" class="headerlink" title="使用props传递数据"></a>使用props传递数据</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">组件的内容不仅仅是对模板的复用，更重要的是组件之间的通讯.</span></span><br><span class="line"><span class="comment">父组件向子组件传递数据和参数，子组件接收到参数后再根据参数的</span></span><br><span class="line"><span class="comment">不同来渲染不同的内容或执行操作，这个正向传递的过程就是通过props来实现的</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>props来声明需要从父组件接受的数据，值类型为数组和对象，对象中可以自定义数据类型<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">为什么子组件的数据需要从父组件中去获取？</span></span><br><span class="line"><span class="comment">做项目中组件很多，大部分数据都是有后台提供，</span></span><br><span class="line"><span class="comment">如果每个组件都向后台去申请获取数据，</span></span><br><span class="line"><span class="comment">这样的效率是很低下的，管理这些数据也比较麻烦，</span></span><br><span class="line"><span class="comment">所以采取的方法是,所有数据都在页面级的组件中去获取，</span></span><br><span class="line"><span class="comment">子组件如果需要数据就可以通过父组件将所需要的数据传</span></span><br><span class="line"><span class="comment">递给子组件，这样项目中的数据就很方便的管理</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//父组件</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"page"</span>&gt;</span><br><span class="line">        &lt;h3&gt;这是列表页&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">        &lt;button @click="skip()"&gt;跳转到详情页&lt;/</span>button&gt;</span><br><span class="line">        &lt;!--使用组件--&gt;</span><br><span class="line">        &lt;list-item message=<span class="string">"来自列表页的数据"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">list-item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/引入组件</span></span><br><span class="line"><span class="regexp">import ListItem from "@/</span>components/ticketlist/listitem<span class="string">"</span></span><br><span class="line"><span class="string">export defalt&#123;</span></span><br><span class="line"><span class="string">    components:&#123;</span></span><br><span class="line"><span class="string">        ListItem  //注册组件</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//子组件</span></span><br><span class="line"><span class="string">&lt;template&gt;</span></span><br><span class="line"><span class="string">    &lt;div class="</span>list<span class="string">"&gt;</span></span><br><span class="line"><span class="string">        &lt;p&gt;&#123;&#123;message&#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;/template&gt;</span></span><br><span class="line"><span class="string">&lt;script&gt;</span></span><br><span class="line"><span class="string">    export default&#123;</span></span><br><span class="line"><span class="string">        props:['message']</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h6 id="单向数据流"><a href="#单向数据流" class="headerlink" title="单向数据流"></a>单向数据流</h6><blockquote>
+<p>为了保证父组件和子组件完全解耦，避免子组件无意修改了父组件的状态</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">业务中经常遇到两种需要改变props传递过来数据的情况</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.父组件传递初始值，子组件将其作为初始值保存起来</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"page"</span>&gt;</span><br><span class="line">        &lt;!--使用组件--&gt;</span><br><span class="line">        &lt;list-item :message=<span class="string">"normalVariable"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">list-item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/引入组件</span></span><br><span class="line"><span class="regexp">import ListItem from "@/</span>components/ticketlist/listitem<span class="string">"</span></span><br><span class="line"><span class="string">export defalt&#123;</span></span><br><span class="line"><span class="string">    data()&#123;</span></span><br><span class="line"><span class="string">        return&#123;</span></span><br><span class="line"><span class="string">            mormalVariable:"</span>初始值<span class="string">"      </span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    components:&#123;</span></span><br><span class="line"><span class="string">        ListItem  //注册组件</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> //子组件</span></span><br><span class="line"><span class="string"> &lt;template&gt;</span></span><br><span class="line"><span class="string"> &lt;div class="</span>page-child<span class="string">"&gt;</span></span><br><span class="line"><span class="string">    &lt;p&gt;&#123;&#123;receive&#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="string"> &lt;/div&gt;</span></span><br><span class="line"><span class="string"> &lt;/templte&gt;</span></span><br><span class="line"><span class="string"> export dafault&#123;</span></span><br><span class="line"><span class="string">     data()&#123;</span></span><br><span class="line"><span class="string">         return&#123;</span></span><br><span class="line"><span class="string">            receive:this.message  //只需要维护receive不需要操作message</span></span><br><span class="line"><span class="string">         &#125;</span></span><br><span class="line"><span class="string">     &#125;,</span></span><br><span class="line"><span class="string">     props:["</span>message<span class="string">"]</span></span><br><span class="line"><span class="string"> &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//2.另一种情况是props作为需要被转变的原始值传入，这种情况用计算属性就可以了</span></span><br></pre></td></tr></table></figure>
+<h4 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h4><ul>
+<li>自定义事件以及$emit方法<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$emit(<span class="string">'event'</span>,val)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">vue实例方法$emit</span></span><br><span class="line"><span class="comment">参数event为自定义事件名</span></span><br><span class="line"><span class="comment">参数val代表通过自定义事件传递的值(可选)</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>子组件传值给父组件的时候，事件触发及接受原则是:<strong> 谁触发的监听谁接受 </strong></p>
+</blockquote>
+<ul>
+<li>兄弟组件通信的处理方式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">利用props和$emit的综合使用</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="slot插槽分发内容"><a href="#slot插槽分发内容" class="headerlink" title="slot插槽分发内容"></a>slot插槽分发内容</h4><ul>
+<li><p>匿名插槽</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//假设现在有一个弹出提示框，头部，中间，底部，只有中间区域改变</span><br><span class="line">// 子组件</span><br><span class="line">&lt;div class=&quot;child&gt;</span><br><span class="line">    &lt;slot&gt;如果没有分内容则显示此段话&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//父组件</span><br><span class="line">&lt;child&gt;</span><br><span class="line">    &lt;h1&gt;显示弹出的内容&lt;/h1&gt;</span><br><span class="line">&lt;/child&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>具名插槽</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 子组件</span><br><span class="line">&lt;div class=&quot;child&gt;</span><br><span class="line">    &lt;slot name=&quot;CPU&quot;&gt;CPU插槽&lt;/slot&gt;</span><br><span class="line">    &lt;slot name=&quot;GPU&quot;&gt;显卡插槽&lt;/slot&gt;</span><br><span class="line">    &lt;slot name=&quot;Memory&quot;&gt;内存插槽&lt;/slot&gt;</span><br><span class="line">    &lt;slot name=&quot;Hard-drive&quot;&gt;硬盘插槽&lt;/slot&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//父组件</span><br><span class="line">&lt;child&gt;</span><br><span class="line">    &lt;div slot=&quot;CPU&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div slot=&quot;GPU&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div slot=&quot;Memory&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div slot=&quot;Hard-drive&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/child&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="八计算属性和侦听器"><a href="#八计算属性和侦听器" class="headerlink" title="八计算属性和侦听器"></a>八计算属性和侦听器</h1><h5 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、计算属性是基于他依赖缓存的，一个计算属性所依赖的数据发生变化的时候它才会重新计算取值</span><br><span class="line">2、methods不同，只要重新渲染，方法就会被调，函数就会执行</span><br><span class="line">3、究竟使用什么取决于是否需要缓存，当遍历大数组和计算量很大时，应使用计算属性，除非不希望得到缓存</span><br></pre></td></tr></table></figure>
+<h1 id="九插件的使用"><a href="#九插件的使用" class="headerlink" title="九插件的使用"></a>九插件的使用</h1><h4 id="状态管理和vuex"><a href="#状态管理和vuex" class="headerlink" title="状态管理和vuex"></a>状态管理和vuex</h4><ul>
+<li>安装 cnpm installl vuex –save</li>
+<li><p>使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//@/store/index.js</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state:&#123;</span><br><span class="line">        <span class="comment">//state存放数据</span></span><br><span class="line">        count:<span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mutations:&#123;</span><br><span class="line">        <span class="comment">//状态的变化</span></span><br><span class="line">        increment:<span class="function"><span class="params">state</span>=&gt;</span>state.count++,</span><br><span class="line">        decrement:<span class="function"><span class="params">state</span>=&gt;</span>state.count--</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.js中映入store</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">"@/store"</span></span><br><span class="line"><span class="comment">//在实例中挂载</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el:<span class="string">"#app"</span>,</span><br><span class="line">    store,</span><br><span class="line">    ....</span><br><span class="line">    ...</span><br><span class="line">    ..</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新建组件page</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"page"</span>&gt;</span><br><span class="line">          &lt;Button  type=<span class="string">"success"</span> @click=<span class="string">"increment"</span>&gt;+<span class="xml"><span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line">        &lt;Button type=<span class="string">"success"</span> @click=<span class="string">"decrement"</span>&gt;-<span class="xml"><span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">        data()&#123;</span><br><span class="line">            <span class="keyword">return</span>&#123;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            increment()&#123;</span><br><span class="line">                <span class="keyword">this</span>.$store.commit(<span class="string">"increment"</span>)</span><br><span class="line">            &#125;,</span><br><span class="line">            decrement()&#123;</span><br><span class="line">                <span class="keyword">this</span>.$store.commit(<span class="string">"decrement"</span>)</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;,</span><br><span class="line">        computed:&#123;</span><br><span class="line">            count()&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.count</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>总结：引入Vuex后统一的对数据进行管理存放，在各个页面组件中使用commit方法提交mutation对共享数据进行修改</p>
+<blockquote>
+<p>案例：项目中统一管理登录状态的数据，如购票业务中，未登录的情况下如果点击购票肯定是会提示用户先登录，整个页面都会共享登录信息，也就是token标识，通过vuex很容易就拿到token值，方便后面的操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> state=&#123;</span><br><span class="line">    sLoginInfo:loginInfo  <span class="comment">//登录信息</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> mutations=&#123;</span><br><span class="line">    <span class="comment">//登录</span></span><br><span class="line">    mLogin:<span class="function">(<span class="params">state,loginInfo</span>)=&gt;</span>&#123;</span><br><span class="line">        loginInfo.extTime-=<span class="number">0</span></span><br><span class="line">        loginInfo.genTime-=<span class="number">0</span></span><br><span class="line">        state.sLoginInfo=loginInfo</span><br><span class="line">        <span class="built_in">window</span>.localStorage.setItem(storageKey,<span class="built_in">JSON</span>.stringify(loginInfo))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//退出</span></span><br><span class="line">    mLogout:<span class="function">(<span class="params">state</span>)=&gt;</span>&#123;</span><br><span class="line">        state.sLoginInfo=&#123;&#125;</span><br><span class="line">        <span class="built_in">window</span>.localStorage.removeItem(storageKey)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state,mutations</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<h4 id="二维码插件-QRCode"><a href="#二维码插件-QRCode" class="headerlink" title="二维码插件 QRCode"></a>二维码插件 QRCode</h4><p>微信支付流程</p>
+<ul>
+<li>1.确定微信支付时把当前订单号发送给后台</li>
+<li>2.后台利用订单号去数据库查询订单信息并整合微信官方等信息后发送给微信官方，微信官方会生成一个携带支付必要信息的链接给后台开发人员</li>
+<li>3.后台将微信官方提供的字符串链接返回给前端，利用二维码插件可以将链接生成二维码展示处理，用户扫码就能支付了</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">// cnpm install qrcode --save</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;page&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;canvasArea&quot;&gt;</span><br><span class="line">            &lt;canvas id=&quot;canvas&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">import Vue from &apos;vue&apos;</span><br><span class="line">import QRCode from &quot;qrcode&quot;</span><br><span class="line">Vue.use(QRCode)</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    data()&#123;</span><br><span class="line">        return&#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">        useqrcode()&#123;</span><br><span class="line">            //放二维码的容器</span><br><span class="line">            var canvas=document.getElementById(&quot;canvas&quot;)</span><br><span class="line">            //调用函数生成二维码，参数依次为 容器，生成的内容，回调函数</span><br><span class="line">            QRCode.toCanvas(canvas,&quot;http://www.baidu.com&quot;,function(err)&#123;</span><br><span class="line">                if(err)&#123;</span><br><span class="line">                    console.error(err)</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    //成功之后可回调的函数</span><br><span class="line">                    alert(&quot;success&quot;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mounted () &#123;</span><br><span class="line">        this.useqrcode() //组件挂载的时候调用二维码生成函数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/15/vue项目开发(一)/" rel="next" title="vue项目开发(一)">
+                <i class="fa fa-chevron-left"></i> vue项目开发(一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/2.jpg" alt="陈 航">
+            
+              <p class="site-author-name" itemprop="name">陈 航</p>
+              <p class="site-description motion-element" itemprop="description">以码为梦</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#六-Vue指令-Directive"><span class="nav-number">1.</span> <span class="nav-text">六 Vue指令(Directive)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#条件渲染指令"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">条件渲染指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表渲染指令v-for"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">列表渲染指令v-for</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法和事件"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">方法和事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表单双向绑定v-model"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">表单双向绑定v-model</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#七-组件详解"><span class="nav-number">2.</span> <span class="nav-text">七 组件详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#组件概念和复用"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">组件概念和复用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用props传递数据"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">使用props传递数据</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#单向数据流"><span class="nav-number">2.0.0.2.0.1.</span> <span class="nav-text">单向数据流</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件通信"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">组件通信</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#slot插槽分发内容"><span class="nav-number">2.0.0.4.</span> <span class="nav-text">slot插槽分发内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八计算属性和侦听器"><span class="nav-number">3.</span> <span class="nav-text">八计算属性和侦听器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算属性"><span class="nav-number">3.0.0.0.1.</span> <span class="nav-text">计算属性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#九插件的使用"><span class="nav-number">4.</span> <span class="nav-text">九插件的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#状态管理和vuex"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">状态管理和vuex</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二维码插件-QRCode"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">二维码插件 QRCode</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈 航</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由  强力驱动</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash;  v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
