@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -84,7 +84,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue项目开发(一)">
 <meta property="og:url" content="http://yoursite.com/2019/02/15/vue项目开发(一)/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Eastboat">
 <meta property="og:description" content="ES6let和const命令 let  块级作用域变量作用域不会提前声明相同作用域内不能重复声明同一个变量for循环中的父子作用域   const(内存地址不变，所以是常量)  与let的作用域相同const一单声明常量就立即被初始化。只声明不赋值也会报错    注意const一般用在定义模块中的常量 let限制了变量的作用域，保证变量不去影响全局变量，所以尽量用let代替var 变量的解构赋值数">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-02-20T15:17:27.793Z">
@@ -126,7 +126,7 @@
 
 
 
-  <title>vue项目开发(一) | Hexo</title>
+  <title>vue项目开发(一) | Eastboat</title>
   
 
 
@@ -138,7 +138,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -148,7 +148,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -156,7 +156,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">Eastboat</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -238,21 +238,21 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/15/vue项目开发(一)/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈 航">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/2.jpg">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eastboat">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/1.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eastboat">
     </span>
 
     
@@ -449,7 +449,7 @@ let限制了变量的作用域，保证变量不去影响全局变量，所以�
 <p>借助router实例的一些方法实现编程路由</p>
 </blockquote>
 <h6 id="router-push"><a href="#router-push" class="headerlink" title="$router.push"></a>$router.push</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//参数可以是字符串路径</span></span><br><span class="line"><span class="keyword">this</span>.$router.push(<span class="string">"user"</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment">//参数可以是描述地址的对象</span></span><br><span class="line"><span class="keyword">this</span>.$router.push(&#123;<span class="attr">path</span>:<span class="string">"user"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//命名的路由   #/user/123</span></span><br><span class="line"> <span class="keyword">this</span>.$router.push(&#123;<span class="attr">name</span>:<span class="string">"User"</span>,<span class="attr">params</span>:&#123;<span class="attr">Id</span>:<span class="number">123</span>&#125;&#125;)</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//带参数的查询   页面跳转另一个页面需要携带数据可以使用此方法</span></span><br><span class="line"> <span class="keyword">this</span>.$router.push(&#123;<span class="attr">path</span>:<span class="string">"user"</span>,<span class="attr">query</span>:&#123;<span class="attr">userAddress</span>:<span class="string">'上海市'</span>&#125;&#125;)</span><br></pre></td></tr></table></figure>
-<h6 id="router-replace"><a href="#router-replace" class="headerlink" title="$router.replace"></a>$router.replace</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    和push方法不同的是，他不会像history栈中添加新的记录,</span></span><br><span class="line"><span class="comment">    而是跟他的方法名一样只替换掉当前的历史记录</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">this</span>.$router.replace(<span class="string">"/user"</span>)  <span class="comment">//等价如下</span></span><br><span class="line"></span><br><span class="line">&lt;router-link :to=<span class="string">"user"</span> replace&gt;<span class="xml"><span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h6 id="router-replace"><a href="#router-replace" class="headerlink" title="$router.replace"></a>$router.replace</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    和push方法不同的是，他不会像history栈中添加新的记录,</span></span><br><span class="line"><span class="comment">    而是跟他的方法名一样只替换掉当前的历史记录</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">this</span>.$router.replace(<span class="string">"/user"</span>)  <span class="comment">//等价如下</span></span><br><span class="line"></span><br><span class="line">&lt;router-link :to=<span class="string">"user"</span> replace&gt;&lt;<span class="regexp">/router-link&gt;</span></span><br></pre></td></tr></table></figure>
 <h6 id="router-go"><a href="#router-go" class="headerlink" title="$router.go"></a>$router.go</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">this.$router.go(1) ==&gt;  history.forward()</span><br><span class="line">this.$router.go(-1) ==&gt;  history.back()</span><br><span class="line"></span><br><span class="line">//如果记录不够就会失败</span><br></pre></td></tr></table></figure>
 <h1 id="Vue-js-知识点"><a href="#Vue-js-知识点" class="headerlink" title="Vue.js 知识点"></a>Vue.js 知识点</h1><p>特点</p>
 <blockquote>
@@ -675,12 +675,12 @@ let限制了变量的作用域，保证变量不去影响全局变量，所以�
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/2.jpg" alt="陈 航">
+              <img class="site-author-image" itemprop="image" src="/images/1.jpg" alt="Eastboat">
             
-              <p class="site-author-name" itemprop="name">陈 航</p>
-              <p class="site-description motion-element" itemprop="description">以码为梦</p>
+              <p class="site-author-name" itemprop="name">Eastboat</p>
+              <p class="site-description motion-element" itemprop="description">love coding, love life</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -703,7 +703,7 @@ let限制了变量的作用域，保证变量不去影响全局变量，所以�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -757,11 +757,11 @@ let限制了变量的作用域，保证变量不去影响全局变量，所以�
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">陈 航</span>
+  <span class="author" itemprop="copyrightHolder">Eastboat</span>
 
   
 </div>

@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="以码为梦">
+<meta name="description" content="love coding, love life">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Eastboat">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="以码为梦">
+<meta property="og:site_name" content="Eastboat">
+<meta property="og:description" content="love coding, love life">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="以码为梦">
+<meta name="twitter:title" content="Eastboat">
+<meta name="twitter:description" content="love coding, love life">
 
 
 
@@ -124,7 +124,7 @@
 
 
 
-  <title>Hexo</title>
+  <title>Eastboat</title>
   
 
 
@@ -136,7 +136,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -147,7 +147,7 @@
   page-home">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -155,7 +155,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">Eastboat</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -237,21 +237,21 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/vue项目开发(二)/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈 航">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/2.jpg">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eastboat">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/1.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eastboat">
     </span>
 
     
@@ -345,12 +345,12 @@
 </ul>
 <h1 id="七-组件详解"><a href="#七-组件详解" class="headerlink" title="七 组件详解"></a>七 组件详解</h1><h4 id="组件概念和复用"><a href="#组件概念和复用" class="headerlink" title="组件概念和复用"></a>组件概念和复用</h4><h4 id="使用props传递数据"><a href="#使用props传递数据" class="headerlink" title="使用props传递数据"></a>使用props传递数据</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">组件的内容不仅仅是对模板的复用，更重要的是组件之间的通讯.</span></span><br><span class="line"><span class="comment">父组件向子组件传递数据和参数，子组件接收到参数后再根据参数的</span></span><br><span class="line"><span class="comment">不同来渲染不同的内容或执行操作，这个正向传递的过程就是通过props来实现的</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>props来声明需要从父组件接受的数据，值类型为数组和对象，对象中可以自定义数据类型<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">为什么子组件的数据需要从父组件中去获取？</span></span><br><span class="line"><span class="comment">做项目中组件很多，大部分数据都是有后台提供，</span></span><br><span class="line"><span class="comment">如果每个组件都向后台去申请获取数据，</span></span><br><span class="line"><span class="comment">这样的效率是很低下的，管理这些数据也比较麻烦，</span></span><br><span class="line"><span class="comment">所以采取的方法是,所有数据都在页面级的组件中去获取，</span></span><br><span class="line"><span class="comment">子组件如果需要数据就可以通过父组件将所需要的数据传</span></span><br><span class="line"><span class="comment">递给子组件，这样项目中的数据就很方便的管理</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//父组件</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"page"</span>&gt;</span><br><span class="line">        &lt;h3&gt;这是列表页&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">        &lt;button @click="skip()"&gt;跳转到详情页&lt;/</span>button&gt;</span><br><span class="line">        &lt;!--使用组件--&gt;</span><br><span class="line">        &lt;list-item message=<span class="string">"来自列表页的数据"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">list-item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/引入组件</span></span><br><span class="line"><span class="regexp">import ListItem from "@/</span>components/ticketlist/listitem<span class="string">"</span></span><br><span class="line"><span class="string">export defalt&#123;</span></span><br><span class="line"><span class="string">    components:&#123;</span></span><br><span class="line"><span class="string">        ListItem  //注册组件</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//子组件</span></span><br><span class="line"><span class="string">&lt;template&gt;</span></span><br><span class="line"><span class="string">    &lt;div class="</span>list<span class="string">"&gt;</span></span><br><span class="line"><span class="string">        &lt;p&gt;&#123;&#123;message&#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;/template&gt;</span></span><br><span class="line"><span class="string">&lt;script&gt;</span></span><br><span class="line"><span class="string">    export default&#123;</span></span><br><span class="line"><span class="string">        props:['message']</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>props来声明需要从父组件接受的数据，值类型为数组和对象，对象中可以自定义数据类型<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">为什么子组件的数据需要从父组件中去获取？</span></span><br><span class="line"><span class="comment">做项目中组件很多，大部分数据都是有后台提供，</span></span><br><span class="line"><span class="comment">如果每个组件都向后台去申请获取数据，</span></span><br><span class="line"><span class="comment">这样的效率是很低下的，管理这些数据也比较麻烦，</span></span><br><span class="line"><span class="comment">所以采取的方法是,所有数据都在页面级的组件中去获取，</span></span><br><span class="line"><span class="comment">子组件如果需要数据就可以通过父组件将所需要的数据传</span></span><br><span class="line"><span class="comment">递给子组件，这样项目中的数据就很方便的管理</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//父组件</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"page"</span>&gt;</span><br><span class="line">        &lt;h3&gt;这是列表页&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">        &lt;button @click="skip()"&gt;跳转到详情页&lt;/</span>button&gt;</span><br><span class="line">        &lt;!--使用组件--&gt;</span><br><span class="line">        &lt;list-item message=<span class="string">"来自列表页的数据"</span>&gt;&lt;<span class="regexp">/list-item&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/引入组件</span></span><br><span class="line"><span class="regexp">import ListItem from "@/</span>components/ticketlist/listitem<span class="string">"</span></span><br><span class="line"><span class="string">export defalt&#123;</span></span><br><span class="line"><span class="string">    components:&#123;</span></span><br><span class="line"><span class="string">        ListItem  //注册组件</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//子组件</span></span><br><span class="line"><span class="string">&lt;template&gt;</span></span><br><span class="line"><span class="string">    &lt;div class="</span>list<span class="string">"&gt;</span></span><br><span class="line"><span class="string">        &lt;p&gt;&#123;&#123;message&#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;/template&gt;</span></span><br><span class="line"><span class="string">&lt;script&gt;</span></span><br><span class="line"><span class="string">    export default&#123;</span></span><br><span class="line"><span class="string">        props:['message']</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <h6 id="单向数据流"><a href="#单向数据流" class="headerlink" title="单向数据流"></a>单向数据流</h6><blockquote>
 <p>为了保证父组件和子组件完全解耦，避免子组件无意修改了父组件的状态</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">业务中经常遇到两种需要改变props传递过来数据的情况</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.父组件传递初始值，子组件将其作为初始值保存起来</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"page"</span>&gt;</span><br><span class="line">        &lt;!--使用组件--&gt;</span><br><span class="line">        &lt;list-item :message=<span class="string">"normalVariable"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">list-item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/引入组件</span></span><br><span class="line"><span class="regexp">import ListItem from "@/</span>components/ticketlist/listitem<span class="string">"</span></span><br><span class="line"><span class="string">export defalt&#123;</span></span><br><span class="line"><span class="string">    data()&#123;</span></span><br><span class="line"><span class="string">        return&#123;</span></span><br><span class="line"><span class="string">            mormalVariable:"</span>初始值<span class="string">"      </span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    components:&#123;</span></span><br><span class="line"><span class="string">        ListItem  //注册组件</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> //子组件</span></span><br><span class="line"><span class="string"> &lt;template&gt;</span></span><br><span class="line"><span class="string"> &lt;div class="</span>page-child<span class="string">"&gt;</span></span><br><span class="line"><span class="string">    &lt;p&gt;&#123;&#123;receive&#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="string"> &lt;/div&gt;</span></span><br><span class="line"><span class="string"> &lt;/templte&gt;</span></span><br><span class="line"><span class="string"> export dafault&#123;</span></span><br><span class="line"><span class="string">     data()&#123;</span></span><br><span class="line"><span class="string">         return&#123;</span></span><br><span class="line"><span class="string">            receive:this.message  //只需要维护receive不需要操作message</span></span><br><span class="line"><span class="string">         &#125;</span></span><br><span class="line"><span class="string">     &#125;,</span></span><br><span class="line"><span class="string">     props:["</span>message<span class="string">"]</span></span><br><span class="line"><span class="string"> &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//2.另一种情况是props作为需要被转变的原始值传入，这种情况用计算属性就可以了</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">业务中经常遇到两种需要改变props传递过来数据的情况</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.父组件传递初始值，子组件将其作为初始值保存起来</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"page"</span>&gt;</span><br><span class="line">        &lt;!--使用组件--&gt;</span><br><span class="line">        &lt;list-item :message=<span class="string">"normalVariable"</span>&gt;&lt;<span class="regexp">/list-item&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/引入组件</span></span><br><span class="line"><span class="regexp">import ListItem from "@/</span>components/ticketlist/listitem<span class="string">"</span></span><br><span class="line"><span class="string">export defalt&#123;</span></span><br><span class="line"><span class="string">    data()&#123;</span></span><br><span class="line"><span class="string">        return&#123;</span></span><br><span class="line"><span class="string">            mormalVariable:"</span>初始值<span class="string">"      </span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    components:&#123;</span></span><br><span class="line"><span class="string">        ListItem  //注册组件</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> //子组件</span></span><br><span class="line"><span class="string"> &lt;template&gt;</span></span><br><span class="line"><span class="string"> &lt;div class="</span>page-child<span class="string">"&gt;</span></span><br><span class="line"><span class="string">    &lt;p&gt;&#123;&#123;receive&#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="string"> &lt;/div&gt;</span></span><br><span class="line"><span class="string"> &lt;/templte&gt;</span></span><br><span class="line"><span class="string"> export dafault&#123;</span></span><br><span class="line"><span class="string">     data()&#123;</span></span><br><span class="line"><span class="string">         return&#123;</span></span><br><span class="line"><span class="string">            receive:this.message  //只需要维护receive不需要操作message</span></span><br><span class="line"><span class="string">         &#125;</span></span><br><span class="line"><span class="string">     &#125;,</span></span><br><span class="line"><span class="string">     props:["</span>message<span class="string">"]</span></span><br><span class="line"><span class="string"> &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//2.另一种情况是props作为需要被转变的原始值传入，这种情况用计算属性就可以了</span></span><br></pre></td></tr></table></figure>
 <h4 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h4><ul>
 <li>自定义事件以及$emit方法<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$emit(<span class="string">'event'</span>,val)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">vue实例方法$emit</span></span><br><span class="line"><span class="comment">参数event为自定义事件名</span></span><br><span class="line"><span class="comment">参数val代表通过自定义事件传递的值(可选)</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -374,7 +374,7 @@
 <h1 id="九插件的使用"><a href="#九插件的使用" class="headerlink" title="九插件的使用"></a>九插件的使用</h1><h4 id="状态管理和vuex"><a href="#状态管理和vuex" class="headerlink" title="状态管理和vuex"></a>状态管理和vuex</h4><ul>
 <li>安装 cnpm installl vuex –save</li>
 <li><p>使用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//@/store/index.js</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state:&#123;</span><br><span class="line">        <span class="comment">//state存放数据</span></span><br><span class="line">        count:<span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mutations:&#123;</span><br><span class="line">        <span class="comment">//状态的变化</span></span><br><span class="line">        increment:<span class="function"><span class="params">state</span>=&gt;</span>state.count++,</span><br><span class="line">        decrement:<span class="function"><span class="params">state</span>=&gt;</span>state.count--</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.js中映入store</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">"@/store"</span></span><br><span class="line"><span class="comment">//在实例中挂载</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el:<span class="string">"#app"</span>,</span><br><span class="line">    store,</span><br><span class="line">    ....</span><br><span class="line">    ...</span><br><span class="line">    ..</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新建组件page</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"page"</span>&gt;</span><br><span class="line">          &lt;Button  type=<span class="string">"success"</span> @click=<span class="string">"increment"</span>&gt;+<span class="xml"><span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line">        &lt;Button type=<span class="string">"success"</span> @click=<span class="string">"decrement"</span>&gt;-<span class="xml"><span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">        data()&#123;</span><br><span class="line">            <span class="keyword">return</span>&#123;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            increment()&#123;</span><br><span class="line">                <span class="keyword">this</span>.$store.commit(<span class="string">"increment"</span>)</span><br><span class="line">            &#125;,</span><br><span class="line">            decrement()&#123;</span><br><span class="line">                <span class="keyword">this</span>.$store.commit(<span class="string">"decrement"</span>)</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;,</span><br><span class="line">        computed:&#123;</span><br><span class="line">            count()&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.count</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//@/store/index.js</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state:&#123;</span><br><span class="line">        <span class="comment">//state存放数据</span></span><br><span class="line">        count:<span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mutations:&#123;</span><br><span class="line">        <span class="comment">//状态的变化</span></span><br><span class="line">        increment:<span class="function"><span class="params">state</span>=&gt;</span>state.count++,</span><br><span class="line">        decrement:<span class="function"><span class="params">state</span>=&gt;</span>state.count--</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.js中映入store</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">"@/store"</span></span><br><span class="line"><span class="comment">//在实例中挂载</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el:<span class="string">"#app"</span>,</span><br><span class="line">    store,</span><br><span class="line">    ....</span><br><span class="line">    ...</span><br><span class="line">    ..</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新建组件page</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"page"</span>&gt;</span><br><span class="line">          &lt;Button  type=<span class="string">"success"</span> @click=<span class="string">"increment"</span>&gt;+&lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Button type="success" @click="decrement"&gt;-&lt;/</span>Button&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">        data()&#123;</span><br><span class="line">            <span class="keyword">return</span>&#123;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            increment()&#123;</span><br><span class="line">                <span class="keyword">this</span>.$store.commit(<span class="string">"increment"</span>)</span><br><span class="line">            &#125;,</span><br><span class="line">            decrement()&#123;</span><br><span class="line">                <span class="keyword">this</span>.$store.commit(<span class="string">"decrement"</span>)</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;,</span><br><span class="line">        computed:&#123;</span><br><span class="line">            count()&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.count</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>总结：引入Vuex后统一的对数据进行管理存放，在各个页面组件中使用commit方法提交mutation对共享数据进行修改</p>
 <blockquote>
@@ -432,21 +432,21 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/15/vue项目开发(一)/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈 航">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/2.jpg">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eastboat">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/1.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eastboat">
     </span>
 
     
@@ -647,7 +647,7 @@ let限制了变量的作用域，保证变量不去影响全局变量，所以�
 <p>借助router实例的一些方法实现编程路由</p>
 </blockquote>
 <h6 id="router-push"><a href="#router-push" class="headerlink" title="$router.push"></a>$router.push</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//参数可以是字符串路径</span></span><br><span class="line"><span class="keyword">this</span>.$router.push(<span class="string">"user"</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment">//参数可以是描述地址的对象</span></span><br><span class="line"><span class="keyword">this</span>.$router.push(&#123;<span class="attr">path</span>:<span class="string">"user"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//命名的路由   #/user/123</span></span><br><span class="line"> <span class="keyword">this</span>.$router.push(&#123;<span class="attr">name</span>:<span class="string">"User"</span>,<span class="attr">params</span>:&#123;<span class="attr">Id</span>:<span class="number">123</span>&#125;&#125;)</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//带参数的查询   页面跳转另一个页面需要携带数据可以使用此方法</span></span><br><span class="line"> <span class="keyword">this</span>.$router.push(&#123;<span class="attr">path</span>:<span class="string">"user"</span>,<span class="attr">query</span>:&#123;<span class="attr">userAddress</span>:<span class="string">'上海市'</span>&#125;&#125;)</span><br></pre></td></tr></table></figure>
-<h6 id="router-replace"><a href="#router-replace" class="headerlink" title="$router.replace"></a>$router.replace</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    和push方法不同的是，他不会像history栈中添加新的记录,</span></span><br><span class="line"><span class="comment">    而是跟他的方法名一样只替换掉当前的历史记录</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">this</span>.$router.replace(<span class="string">"/user"</span>)  <span class="comment">//等价如下</span></span><br><span class="line"></span><br><span class="line">&lt;router-link :to=<span class="string">"user"</span> replace&gt;<span class="xml"><span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h6 id="router-replace"><a href="#router-replace" class="headerlink" title="$router.replace"></a>$router.replace</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    和push方法不同的是，他不会像history栈中添加新的记录,</span></span><br><span class="line"><span class="comment">    而是跟他的方法名一样只替换掉当前的历史记录</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">this</span>.$router.replace(<span class="string">"/user"</span>)  <span class="comment">//等价如下</span></span><br><span class="line"></span><br><span class="line">&lt;router-link :to=<span class="string">"user"</span> replace&gt;&lt;<span class="regexp">/router-link&gt;</span></span><br></pre></td></tr></table></figure>
 <h6 id="router-go"><a href="#router-go" class="headerlink" title="$router.go"></a>$router.go</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">this.$router.go(1) ==&gt;  history.forward()</span><br><span class="line">this.$router.go(-1) ==&gt;  history.back()</span><br><span class="line"></span><br><span class="line">//如果记录不够就会失败</span><br></pre></td></tr></table></figure>
 <h1 id="Vue-js-知识点"><a href="#Vue-js-知识点" class="headerlink" title="Vue.js 知识点"></a>Vue.js 知识点</h1><p>特点</p>
 <blockquote>
@@ -810,21 +810,21 @@ let限制了变量的作用域，保证变量不去影响全局变量，所以�
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/前端模块化演变/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈 航">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/2.jpg">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eastboat">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/1.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eastboat">
     </span>
 
     
@@ -1015,21 +1015,21 @@ let限制了变量的作用域，保证变量不去影响全局变量，所以�
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/这是测试第一/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈 航">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/2.jpg">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eastboat">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/1.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eastboat">
     </span>
 
     
@@ -1171,12 +1171,12 @@ let限制了变量的作用域，保证变量不去影响全局变量，所以�
 
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/2.jpg" alt="陈 航">
+              <img class="site-author-image" itemprop="image" src="/images/1.jpg" alt="Eastboat">
             
-              <p class="site-author-name" itemprop="name">陈 航</p>
-              <p class="site-description motion-element" itemprop="description">以码为梦</p>
+              <p class="site-author-name" itemprop="name">Eastboat</p>
+              <p class="site-description motion-element" itemprop="description">love coding, love life</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -1199,7 +1199,7 @@ let限制了变量的作用域，保证变量不去影响全局变量，所以�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1237,11 +1237,11 @@ let限制了变量的作用域，保证变量不去影响全局变量，所以�
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">陈 航</span>
+  <span class="author" itemprop="copyrightHolder">Eastboat</span>
 
   
 </div>
